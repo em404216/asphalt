@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,161 +20,237 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
-    :root {
-      --thm-primary: #edbc0c;
-      --thm-dark: #011143;
-      --thm-light: #f9f9f9;
-      --thm-border: #dcdcdc;
-      --font-family: 'Arial', sans-serif;
-    }
-    /* خلفية داكنة عامة */
-    body {
-      font-family: var(--font-family);
-      background-color: var(--thm-dark);
-      color: var(--thm-light);
-      margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-      min-height: 100vh;
-    }
-    /* دوائر متحركة في الخلفية */
-    .background-circles {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1; /* خلف المحتوى */
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .background-circles div {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.15;
-      animation: float 20s infinite ease-in-out alternate;
-      background: linear-gradient(135deg, var(--thm-primary), #f7c84e);
-    }
-    .background-circles div:nth-child(1) {
-      width: 200px; height: 200px;
-      top: 10%;
-      left: 15%;
-      animation-duration: 25s;
-    }
-    .background-circles div:nth-child(2) {
-      width: 350px; height: 350px;
-      top: 50%;
-      left: 75%;
-      animation-duration: 30s;
-      animation-delay: 5s;
-    }
-    .background-circles div:nth-child(3) {
-      width: 150px; height: 150px;
-      top: 80%;
-      left: 40%;
-      animation-duration: 28s;
-      animation-delay: 3s;
-    }
-    .background-circles div:nth-child(4) {
-      width: 400px; height: 400px;
-      top: 30%;
-      left: 50%;
-      animation-duration: 35s;
-      animation-delay: 8s;
-    }
-    @keyframes float {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0.15;
-      }
-      50% {
-        transform: translateY(-40px) translateX(30px);
-        opacity: 0.3;
-      }
-      100% {
-        transform: translateY(0) translateX(0);
-        opacity: 0.15;
-      }
-    }
+:root {
+  --thm-primary: #edbc0c;
+  --thm-dark: #011143;
+  --thm-light: #f9f9f9;
+  --thm-border: #dcdcdc;
+  --font-family: 'Arial', sans-serif;
+}
 
-    main {
-      max-width: 900px;
-      margin: auto;
-      background: var(--thm-light);
-      padding: 30px 40px;
-      border: 1px solid var(--thm-border);
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.15);
-      color: var(--thm-dark);
-      position: relative;
-      z-index: 10;
-    }
-    h1, h2, h3 {
-      color: var(--thm-dark);
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    h2 {
-      color: var(--thm-primary);
-      font-weight: 700;
-    }
-    p, ul {
-      font-size: 1.15rem;
-      color: var(--thm-dark);
-    }
-    ul {
-      list-style-type: disc;
-      padding-right: 20px;
-      margin-bottom: 1.5em;
-    }
-    ul li {
-      margin-bottom: 0.7em;
-    }
-    a {
-      color: var(--thm-primary);
-      text-decoration: none;
-      font-weight: 700;
-      transition: color 0.3s ease;
-      cursor: pointer;
-    }
-    a:hover {
-      color: #b99700;
-      text-decoration: underline;
-    }
-    .contact-info {
-      margin-top: 2em;
-      font-size: 1.15rem;
-    }
-    .contact-info a {
-      color: var(--thm-primary);
-      transition: color 0.3s ease;
-    }
-    .contact-info a:hover {
-      color: #b99700;
-    }
-    .hashtags {
-      margin-top: 2em;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--thm-primary);
-      word-spacing: 15px;
-      line-height: 1.8;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .hashtags.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* خلفية داكنة عامة */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--thm-dark);
+  color: var(--thm-light);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* دوائر متحركة في الخلفية */
+.background-circles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.background-circles div {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: float 20s infinite ease-in-out alternate;
+  background: linear-gradient(135deg, var(--thm-primary), #f7c84e);
+}
+.background-circles div:nth-child(1) {
+  width: 200px; height: 200px;
+  top: 10%; left: 15%;
+  animation-duration: 25s;
+}
+.background-circles div:nth-child(2) {
+  width: 350px; height: 350px;
+  top: 50%; left: 75%;
+  animation-duration: 30s;
+  animation-delay: 5s;
+}
+.background-circles div:nth-child(3) {
+  width: 150px; height: 150px;
+  top: 80%; left: 40%;
+  animation-duration: 28s;
+  animation-delay: 3s;
+}
+.background-circles div:nth-child(4) {
+  width: 400px; height: 400px;
+  top: 30%; left: 50%;
+  animation-duration: 35s;
+  animation-delay: 8s;
+}
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-40px) translateX(30px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.15;
+  }
+}
+
+main {
+  max-width: 80%;
+  margin: auto;
+  background: var(--thm-light);
+  padding: 30px 40px;
+  border: 1px solid var(--thm-border);
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  color: var(--thm-dark);
+  position: relative;
+  z-index: 10;
+}
+
+/* العناوين */
+h1, h2, h3 {
+  color: var(--thm-dark);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+h2 {
+  color: var(--thm-primary);
+  font-weight: 700;
+}
+
+/* الفقرات والقوائم */
+p, ul {
+  font-size: 1.15rem;
+  color: var(--thm-dark);
+}
+ul {
+  list-style-type: disc;
+  padding-right: 20px;
+  margin-bottom: 1.5em;
+}
+ul li {
+  margin-bottom: 0.7em;
+}
+
+/* الروابط */
+a {
+  color: var(--thm-primary);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+a:hover {
+  color: #b99700;
+  text-decoration: underline;
+}
+
+/* معلومات التواصل */
+.contact-info {
+  margin-top: 2em;
+  font-size: 1.15rem;
+}
+.contact-info a {
+  color: var(--thm-primary);
+  transition: color 0.3s ease;
+}
+.contact-info a:hover {
+  color: #b99700;
+}
+
+/* الهاشتاقات */
+.hashtags {
+  margin-top: 2em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--thm-primary);
+  word-spacing: 15px;
+  line-height: 1.8;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.hashtags.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 📱 تجاوب الهاتف المحمول */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  main {
+    padding: 15px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p, ul, .contact-info {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  ul {
+    padding-right: 18px;
+  }
+
+  .hashtags {
+    font-size: 0.9rem;
+    word-spacing: 0px;
+  }
+
+  .background-circles div {
+    opacity: 0.08;
+  }
+
+  .background-circles div:nth-child(1),
+  .background-circles div:nth-child(3) {
+    width: 120px;
+    height: 120px;
+  }
+
+  .background-circles div:nth-child(2),
+  .background-circles div:nth-child(4) {
+    width: 200px;
+    height: 200px;
+  }
+ 
+}
+
+
   </style>
 </head>
 <body>
@@ -220,11 +298,11 @@
       </h2>
       <p class="contact-info" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1400" data-aos-easing="ease-in-out">
         لأي استفسار أو طلب عرض سعر، لا تتردد في الاتصال بنا على الرقم:
-        <a href="tel:+966555555555">+966 555 555 555</a> أو عبر البريد الإلكتروني:
+        <a href="tel:+966555555555">+966 54 074 4945</a> أو عبر البريد الإلكتروني:
         <a href="mailto:info@asfaltqassim.com">info@asfaltqassim.com</a>
       </p>
 
-      <div id="hashtags" class="hashtags" aria-label="كلمات مفتاحية هاشتاق" style="line-height: 2.2; word-spacing: 10px; text-align: center;">
+      <div id="hashtags" class="hashtags" aria-label="كلمات مفتاحية هاشتاق" style="line-height: 2.2;  text-align: center;">
   #مقاول_اسفلت_بالقصيم<br />
   #سفلتة_الطرق_بالقصيم&nbsp;&nbsp;&nbsp;#تركيب_إنترلوك&nbsp;&nbsp;&nbsp;#تكسير_مباني_القصيم<br />
   #توريد_عمال_أسفلت&nbsp;&nbsp;&nbsp;#تركيب_بندورة&nbsp;&nbsp;&nbsp;#مقاولات_القصيم<br />
