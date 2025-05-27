@@ -175,7 +175,7 @@ h1, h2, h3, h4 {
 
 /* الصور داخل المشاريع */
 #projects img {
- border-radius: 0px !important;
+
   transition: 0.3s ease-in-out;
 }
 #projects img:hover {
